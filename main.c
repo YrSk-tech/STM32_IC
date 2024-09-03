@@ -67,7 +67,7 @@ uint16_t CAP_ReadFrequency(void)
 
 	CAP_TIM_VAR.frequency = 0;
 
-	return (frequency);
+	return frequency;
 
 }
 
@@ -79,7 +79,7 @@ uint16_t CAP_ReadDuty(void)
 
 	CAP_TIM_VAR.duty = 0;
 
-	return (duty);
+	return duty;
 
 }
 /* USER CODE END PFP */
@@ -121,10 +121,9 @@ int main(void)
   MX_TIM12_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1); //LED D2 Start timer 3 channel 1
-  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2); //LED D2 Start timer 3 channel 1
   __HAL_TIM_SET_AUTORELOAD(&htim3,2000);  //set the pwm freq to 50hz (42Mhz/420)/2000
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, 600); //LED D2 Set 30% from ARR (2000)
-  //__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 300); //LED D3 Set 15% from ARR (2000)
+
 
   HAL_Delay(100);
 
